@@ -45,3 +45,28 @@ export interface requestHumanResults {
     },
     nat:string
 }
+
+export interface humanDatabaseProps{
+    id:string,
+    name:string,
+    lastName:string,
+    gender:string,
+    age:number,
+    phone:string,
+    cell:string,
+    email:string,
+    country:string,
+    state:string,
+    city:string,
+    streetName:string,
+    streetNumber:string,
+    postCode:number,
+    coordinatesLatitude: string,
+    coordinatesLongitude: string,
+    createdBy:string,
+    picture:string,
+    username:string,
+    password:string,
+    identification:string
+    createdAt:Date
+}

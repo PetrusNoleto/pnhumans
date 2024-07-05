@@ -1,14 +1,35 @@
 "use client"
 import AuthenticatedComponent from "@/components/authenticated";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import MenuIcon from "@/components/icons/menuIcon";
 import LateralMenu from "@/components/lateralmenu/lateralMenu";
 import CreateHumanModal from "@/components/modals/createHumanModals";
+import axios from "axios";
+import {getAuthCookie} from "@/utils/getAuthCookie";
+import {humanDatabaseProps} from "@/types/requesthuman";
+import {retry} from "next/dist/compiled/@next/font/dist/google/retry";
 
 export default function Humans(){
-    const [humanList,setHumanList] = useState([])
+    const [humanList,setHumanList] = useState<humanDatabaseProps[] | []>([])
     const [openLateralMenu,setOpenLateralMenu] = useState(false)
     const [openNewHumanModal,setOpenNewHumanModal] = useState(false)
+
+    const getHumans = async ()=>{
+        const getCookie = await getAuthCookie()
+        const headers = {
+            'Content-Type': 'application/json',
+            'authorization': getCookie
+        };
+
+        const humans = await axios.post('http://192.168.100.10:3333/humans/',{},{headers})
+        const data = await humans.data
+        setHumanList(data)
+    }
+
+    useEffect(() => {
+        getHumans()
+    }, []);
+
     return(
         <AuthenticatedComponent>
             {openNewHumanModal ?
@@ -48,7 +69,9 @@ export default function Humans(){
                     }}>adicionar humano</button>
                 </div>
                 {humanList.length >= 1  ?
-                    <></>
+                    <>{humanList.map(human=> {
+                        return <h1>{human.name}</h1>
+                    })}</>
                     :
                     <div className={"w-full h-auto p-12 flex flex-col gap-3 justify-center items-center"}>
                         não há humanos

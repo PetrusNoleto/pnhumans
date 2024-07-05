@@ -19,7 +19,6 @@ export default function Page(){
         try {
             const requestLogin = await axios.post('http://192.168.100.10:3333/user/create/',userData)
             const data = await requestLogin.data
-            console.log(data)
             if(data === "usuario já existe!"){
                 setError('username taken')
             }
@@ -27,7 +26,7 @@ export default function Page(){
                 location.replace('/auth/signin/')
             }
         }catch (error){
-            console.log(error)
+            location.replace('/auth/signin/')
         }
     }
     useEffect(() => {
