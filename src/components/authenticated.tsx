@@ -1,6 +1,5 @@
 "use client"
 import React, {ReactNode, useEffect, useState} from "react";
-import { cookies } from 'next/headers';
 import {getUserIsAuthenticated} from "@/utils/getUserIsAuthenticated";
 
 interface authenticatedComponentProps{
@@ -37,9 +36,6 @@ const AuthenticatedComponent:React.FC<authenticatedComponentProps> =({children})
                     }
                 </>
             }
-
-
-
         </div>
     )
 }
