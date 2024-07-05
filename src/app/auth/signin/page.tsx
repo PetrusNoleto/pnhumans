@@ -4,7 +4,9 @@ import GitHubIcon from "@/components/icons/githubIcon";
 import GitLabIcon from "@/components/icons/gitlabIcon";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {createAuthCookie} from "@/utils/createAuthCookie";
+import {createAuthCookie}
+
+    from "@/utils/createAuthCookie";
 
 
 export default function SignIn(){
