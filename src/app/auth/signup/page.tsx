@@ -40,37 +40,37 @@ export default function Page(){
                 <section className={'w-full xl:w-1/2 h-full'}>
                     <div className={'w-full items-center p-3 py-16 flex flex-col gap-3'}>
                         <div className={'w-full lg:w-[480px] py-8 text-center'}>
-                            <h1 className={'capitalize text-2xl py-6 font-medium text-[#141414]'}>Sign Up</h1>
-                            <p className={'first-letter:capitalize font-light text-gray-500'}>use your credentials for
-                                sign up you account
+                            <h1 className={'capitalize text-2xl py-6 font-medium text-[#141414]'}>Registro</h1>
+                            <p className={'first-letter:capitalize font-light text-gray-500'}>
+                               digite suas credenciais para registrar um novo usuario
                             </p>
                         </div>
                         <form className={'w-full lg:w-[480px] flex flex-col gap-3 py-4'} id={'signUpUserForm'} onSubmit={submitForm}>
                             <label className={'flex flex-col gap-2'}>
                                 <span className={'text-center text-red-600 font-bold'}>{error}</span>
                                 <h2 className={'first-letter:capitalize'}>
-                                    username
+                                    usuario
                                 </h2>
                                 <input
                                     id={'userName'}
                                     name={'userName'}
                                     type={"text"}
                                     placeholder={'ex:grandmaster123'}
-                                    className={'text-xs outline-none border-2 border-gray-500 w-full h-11 p-3 focus:border-indigo-700 rounded-md transition-all duration-300'}
+                                    className={'text-xs outline-none border-2 border-gray-500 w-full h-11 p-3 focus:border-blue-700 rounded-md transition-all duration-300'}
                                     value={userName}
                                     onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setUserName(e.target.value)}}
                                 />
                             </label>
                             <label className={'flex flex-col gap-2'}>
                                 <h2 className={'first-letter:capitalize'}>
-                                    password
+                                    senha
                                 </h2>
                                 <input
                                     id={'userPassword'}
                                     name={'userPassword'}
                                     type={"password"}
                                     placeholder={'your password'}
-                                    className={'text-xs outline-none border-2 border-gray-500 w-full h-11 p-3 focus:border-indigo-700 rounded-md transition-all duration-300'}
+                                    className={'text-xs outline-none border-2 border-gray-500 w-full h-11 p-3 focus:border-blue-700 rounded-md transition-all duration-300'}
                                     value={userPassword}
                                     onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setUserPassword(e.target.value)}}
                                 />
@@ -78,37 +78,37 @@ export default function Page(){
                             <button
                                 type={'submit'}
                                 form={'signUpUserForm'}
-                                className={'w-full h-11 border rounded-md bg-indigo-600 text-white hover:bg-indigo-800 transition-all duration-300 font-bold text-sm'}
+                                className={'w-full h-11 border rounded-md bg-blue-600 text-white hover:bg-blue-800 transition-all duration-300 font-bold text-sm'}
                             >
-                                Sign Up
+                                Registrar
                             </button>
                         </form>
                         <span className={'uppercase'}><strong>or</strong></span>
                         <div className={'w-full lg:w-[480px] flex flex-col gap-3 py-4'}>
                             <button
-                                className={'w-full h-11 border rounded-md flex items-center justify-center gap-3'}
+                                className={'group transition-all duration-300 hover:bg-black hover:text-white w-full h-11 border rounded-md flex items-center justify-center gap-3'}
                                 onClick={() => {
                                     alert("em desenvolvimento")
                                 }}
                             >
-                                <div className={'w-full flex justify-center gap-3'}>
+                                <div className={'w-full flex justify-center gap-3 '}>
                                     <div className={'w-6 h-6'}>
-                                        <GitHubIcon/>
+                                        <GitHubIcon otherStyles={'group-hover:fill-white transition-all duration-300'}/>
                                     </div>
-                                    <span>continue with github</span>
+                                    <span>registro com github</span>
                                 </div>
                             </button>
                             <button
-                                className={'w-full h-11 border rounded-md flex items-center justify-center gap-3'}
+                                className={'group transition-all duration-300 hover:bg-[#F33B01]  hover:text-white w-full h-11 border rounded-md flex items-center justify-center gap-3'}
                                 onClick={() => {
                                     alert("em desenvolvimento")
                                 }}
                             >
-                                <div className={'flex justify-start gap-3'}>
+                                <div className={' flex justify-start gap-3'}>
                                     <div className={'w-6 h-6'}>
-                                        <GitLabIcon/>
+                                        <GitLabIcon otherStyles={'group-hover:fill-white transition-all duration-300'}/>
                                     </div>
-                                    <span>continue with gitlab</span>
+                                    <span>registro com gitlab</span>
                                 </div>
                             </button>
                         </div>
