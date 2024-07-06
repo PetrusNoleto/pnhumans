@@ -6,6 +6,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {createAuthCookie} from "@/utils/createAuthCookie";
 import Image from "next/image";
+import {getPnHumansApiAddress} from "@/utils/getVariables";
 
 
 export default function SignIn(){
@@ -14,13 +15,14 @@ export default function SignIn(){
     const [error,setError] = useState('')
     const submitForm = async (e:React.FormEvent<HTMLFormElement>)=>{
             e.preventDefault()
+            const apiAddress = await getPnHumansApiAddress()
             setError("")
             const userData = {
                 requestUserName:userName,
                 requestUserPassword:userPassword
             }
             try {
-                const requestLogin = await axios.post('http://192.168.100.10:3333/user/auth/',userData)
+                const requestLogin = await axios.post(`${apiAddress}/user/auth/`,userData)
                 const responseData = await requestLogin.data
                 await createAuthCookie(responseData.token)
                 location.replace("/dashboard/humans/")

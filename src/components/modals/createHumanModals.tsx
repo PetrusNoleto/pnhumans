@@ -3,6 +3,7 @@ import axios from "axios";
 import Image from "next/image";
 import {requestHumanResults} from "@/types/requesthuman";
 import {getAuthCookie} from "@/utils/getAuthCookie";
+import {getPnHumansApiAddress, getRandoHumanApiAddress} from "@/utils/getVariables";
 
 interface createHumanModalProps{
     closePanel:()=>void
@@ -45,11 +46,12 @@ const CreateHumanModal:React.FC<createHumanModalProps> = ({closePanel})=>{
             requestPassword:human?.login.password,
         };
         const getCookie = await getAuthCookie()
+        const apiAddress = await getPnHumansApiAddress()
         const headers = {
             'Content-Type': 'application/json',
             'authorization': getCookie
         };
-        const sendHuman = await axios.post('http://192.168.100.10:3333/human/create/',requestData,{headers})
+        const sendHuman = await axios.post(`${apiAddress}/human/create/`,requestData,{headers})
         const data = await sendHuman.data
         if(data === "humano criado com sucesso"){
             //setSaveSuccess(true)
@@ -64,7 +66,8 @@ const CreateHumanModal:React.FC<createHumanModalProps> = ({closePanel})=>{
 
 
     const getHuman = async ()=>{
-        const human = await axios.get('https://randomuser.me/api/?nat=br&password=upper,lower,number,8-24')
+        const randomHumansApi = await getRandoHumanApiAddress()
+        const human = await axios.get(randomHumansApi)
         return setHumansList(human.data.results[0])
     }
     const getCountry= ()=>{

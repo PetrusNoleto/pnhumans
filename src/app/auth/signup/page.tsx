@@ -4,6 +4,8 @@ import GitLabIcon from "@/components/icons/gitlabIcon";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Image from "next/image";
+import {getPnHumansApiAddress} from "@/utils/getVariables";
+
 
 
 export default function Page(){
@@ -12,12 +14,13 @@ export default function Page(){
     const [error,setError] = useState('')
     const submitForm = async (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
+        const apiAddress = await getPnHumansApiAddress()
         const userData = {
             requestUserName:userName,
             requestUserPassword:userPassword
         }
         try {
-            const requestLogin = await axios.post('http://192.168.100.10:3333/user/create/',userData)
+            const requestLogin = await axios.post(`${apiAddress}/user/create/`,userData)
             const data = await requestLogin.data
             if(data === "usuario já existe!"){
                 setError('username taken')

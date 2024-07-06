@@ -1,8 +1,6 @@
 "use client"
 import AuthenticatedComponent from "@/components/authenticated";
 import {useEffect, useState} from "react";
-import MenuIcon from "@/components/icons/menuIcon";
-import LateralMenu from "@/components/lateralmenu/lateralMenu";
 import CreateHumanModal from "@/components/modals/createHumanModals";
 import axios from "axios";
 import {getAuthCookie} from "@/utils/getAuthCookie";
@@ -10,6 +8,7 @@ import {humanDatabaseProps} from "@/types/requesthuman";
 import HumansLIstContainer from "@/components/humans/humansLIstContainer";
 import HumansList from "@/components/humans/humanslist";
 import {logout} from "@/utils/logoult";
+import {getPnHumansApiAddress} from "@/utils/getVariables";
 
 
 export default function Humans(){
@@ -19,12 +18,12 @@ export default function Humans(){
 
     const getHumans = async ()=>{
         const getCookie = await getAuthCookie()
+        const apiAddress = await getPnHumansApiAddress()
         const headers = {
             'Content-Type': 'application/json',
             'authorization': getCookie
         };
-
-        const humans = await axios.post('http://192.168.100.10:3333/humans/',{},{headers})
+        const humans = await axios.post(`${apiAddress}/humans/`,{},{headers})
         const data = await humans.data
         setHumanList(data)
     }
@@ -45,15 +44,6 @@ export default function Humans(){
             }
             <header className={'relative p-3 flex justify-between p-3w-full h-[50px]'}>
                 <div className={'flex gap-3 items-center'}>
-                    {/*<button className={'relative w-6 h-6'} onClick={()=>{*/}
-                    {/*    if(openLateralMenu) {*/}
-                    {/*        setOpenLateralMenu(false)*/}
-                    {/*    }else {*/}
-                    {/*        setOpenLateralMenu(true)*/}
-                    {/*    }*/}
-                    {/*}}>*/}
-                    {/*    <MenuIcon/>*/}
-                    {/*</button>*/}
                     <h1 className={'font-medium text-xl'}>pnhumans</h1>
                 </div>
                 <div>
