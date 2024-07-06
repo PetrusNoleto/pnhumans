@@ -30,6 +30,7 @@ export default function Humans(){
     }
 
     useEffect(() => {
+        document.title = "humanos - pnhumans"
         getHumans()
     }, [humanList]);
 

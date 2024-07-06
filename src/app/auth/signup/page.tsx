@@ -30,7 +30,7 @@ export default function Page(){
         }
     }
     useEffect(() => {
-        document.title = "sign - pnhumans"
+        document.title = "registro - pnhumans"
     }, []);
     return(
         <div className={'relative'}>

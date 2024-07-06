@@ -29,7 +29,7 @@ export default function SignIn(){
             }
     }
     useEffect(() => {
-        document.title = "sign - pnhumans"
+        document.title = "login - pnhumans"
     }, []);
     return(
         <div className={'relative'}>
