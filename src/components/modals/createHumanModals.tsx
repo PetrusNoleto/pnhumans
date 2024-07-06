@@ -1,10 +1,15 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Image from "next/image";
 import {requestHumanResults} from "@/types/requesthuman";
 import {getAuthCookie} from "@/utils/getAuthCookie";
 
-const CreateHumanModal = ()=>{
+interface createHumanModalProps{
+    closePanel:()=>void
+}
+
+
+const CreateHumanModal:React.FC<createHumanModalProps> = ({closePanel})=>{
     const [human,setHumansList] = useState<requestHumanResults | null>(null)
     const [loading,setLoading] = useState(false)
     const [saveSuccess,setSaveSuccess] = useState(false)
@@ -47,11 +52,13 @@ const CreateHumanModal = ()=>{
         const sendHuman = await axios.post('http://192.168.100.10:3333/human/create/',requestData,{headers})
         const data = await sendHuman.data
         if(data === "humano criado com sucesso"){
-            setSaveSuccess(true)
-
-        }else{
-            setSaveError(true)
+            //setSaveSuccess(true)
+            setLoading(false)
             await getHuman()
+        }else{
+            //setSaveError(true)
+            await getHuman()
+            setLoading(false)
         }
     }
 
@@ -70,42 +77,10 @@ const CreateHumanModal = ()=>{
     },[])
     return(
         <>
-            {saveError ?
-                <>
-                    <div className={'absolute w-screen h-screen bg-red-600 flex flex-col justify-center items-center z-30 gap-3'}>
-                    <span className={'text-xl text-white font-bold'}>error ao salvar humano</span>
-                        <button className={'p-3 bg-white rounded-lg font-bold'} onClick={() => {
-                            getHuman()
-                            setLoading(false)
-                            setSaveError(false)
-                        }}>aperte para voltar
-                        </button>
-                    </div>
-                </>
-                :
-                <></>
-            }
-            {saveSuccess ?
-                <>
-                    <div className={'absolute w-screen h-screen bg-green-600 flex flex-col justify-center items-center z-30 gap-3'}>
-                    <span className={'text-xl text-white font-bold'}>humano salvo com sucesso</span>
-                        <button className={'p-3 bg-white rounded-lg font-bold'} onClick={() => {
-                            getHuman()
-                            setLoading(false)
-                            setSaveSuccess(false)
-                        }}>aperte para voltar
-                        </button>
-                    </div>
-                </>
-                :
-                <></>
-            }
-
-
             <div
-                className={'w-screen h-screen absolute top-0 left-0  z-10 flex justify-center bg-black/50 items-center'}>
+                className={'w-screen h-screen fixed top-0 left-0  z-10 flex justify-center bg-black/50 items-center'}>
                 <div
-                    className={'relative w-full lg:w-[620px] h-full lg:h-[620px] bg-white rounded-lg shadow-lg border flex flex-col justify-between'}>
+                    className={'relative w-full lg:w-[620px] h-full lg:h-[620px] bg-white rounded-lg shadow-lg border flex flex-col justify-between '}>
                     <div className={'w-full h-full overflow-y-auto p-3 py-20'}>
                     <div
                             className={'w-full fixed lg:absolute top-0 left-0 flex gap-3 p-3 justify-between items-center bg-white z-10 border-b'}>
@@ -165,30 +140,33 @@ const CreateHumanModal = ()=>{
                         <div
                             className={'w-full fixed lg:absolute right-0 bottom-0 flex gap-3 p-3 justify-end bg-white z-10 border-t'}>
                             <button className={'p-3 border rounded-lg bg-[#141414] text-white text-xs font-bold lg:p-2'}
-                                    onClick={() => {
-                                        location.reload()
-                                    }}>
+                                    onClick={closePanel}>
                             voltar
                             </button>
 
-                                    <button
-                                        className={'p-3 border rounded-lg bg-blue-700 text-white text-xs font-bold lg:p-2 flex gap-3'}
-                                        onClick={() => {
-                                            setLoading(true)
-                                            saveHuman()
-                                        }}
-                                    >
-                                        escolher humano
                                         {loading ?
-                                            <div className={'w-4 h-4 border rounded-full animate-spin border-white'}>
-                                                <div className={'w-full h-full border animate-ping'}>
+                                                <div
+                                                    className={'p-3 border rounded-lg bg-blue-700 text-white text-xs font-bold lg:p-2 flex gap-3'}
+                                                    
+                                                >
+                                                    escolher humano
+                                                <div className={'w-4 h-4 border rounded-full animate-spin border-white'}>
+                                                    <div className={'w-full h-full border animate-ping'}>
 
+                                                    </div>
                                                 </div>
                                             </div>
                                             :
-                                            <></>
+                                            <button
+                                                className={'p-3 border rounded-lg bg-blue-700 text-white text-xs font-bold lg:p-2 flex gap-3'}
+                                                onClick={() => {
+                                                    setLoading(true)
+                                                    saveHuman()
+                                                }}
+                                            >
+                                                escolher humano
+                                            </button>
                                         }
-                                    </button>
                         </div>
                     </div>
                 </div>
