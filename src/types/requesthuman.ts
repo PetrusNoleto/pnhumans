@@ -1,0 +1,72 @@
+export interface requestHumanResults {
+    gender:string,
+    name:{
+        title:string,
+        first:string,
+        last:string
+    },
+    location:{
+        street:{
+            number:number,
+            name:string
+        },
+        city:string,
+        state:string,
+        country:string,
+        postcode:number,
+        coordinates:{
+            latitude:string,
+            longitude:string
+        },
+        timezone:{
+            offset:string,
+            description:string
+        },
+    },
+    email:string,
+    login:{
+        uuid:string,
+        username:string,
+        password:string
+    },
+    dob:{
+        age:string
+    }
+    phone:string,
+    cell:string,
+    id:{
+        name:string,
+        value:string
+    },
+    picture:{
+        large:string,
+        medium:string,
+        thumbnail:string
+    },
+    nat:string
+}
+
+export interface humanDatabaseProps{
+    id:string,
+    name:string,
+    lastName:string,
+    gender:string,
+    age:number,
+    phone:string,
+    cell:string,
+    email:string,
+    country:string,
+    state:string,
+    city:string,
+    streetName:string,
+    streetNumber:string,
+    postCode:number,
+    coordinatesLatitude: string,
+    coordinatesLongitude: string,
+    createdBy:string,
+    picture:string,
+    username:string,
+    password:string,
+    identification:string
+    createdAt:Date
+}
