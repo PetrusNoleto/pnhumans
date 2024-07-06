@@ -11,7 +11,7 @@ const CreateHumanModal = ()=>{
     const [saveError,setSaveError] = useState(false)
     const getGender = ()=>{
         if(human?.gender === "male"){
-            return "masulino"
+            return "masculino"
         }
         if(human?.gender === "female"){
             return "feminino"

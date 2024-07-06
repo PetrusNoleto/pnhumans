@@ -7,7 +7,7 @@ import CreateHumanModal from "@/components/modals/createHumanModals";
 import axios from "axios";
 import {getAuthCookie} from "@/utils/getAuthCookie";
 import {humanDatabaseProps} from "@/types/requesthuman";
-import {retry} from "next/dist/compiled/@next/font/dist/google/retry";
+
 
 export default function Humans(){
     const [humanList,setHumanList] = useState<humanDatabaseProps[] | []>([])

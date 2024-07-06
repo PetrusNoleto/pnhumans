@@ -1,5 +1,4 @@
 'use client'
-import Link from "next/link";
 import GitHubIcon from "@/components/icons/githubIcon";
 import GitLabIcon from "@/components/icons/gitlabIcon";
 import React, {useEffect, useState} from "react";
