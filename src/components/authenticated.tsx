@@ -26,10 +26,20 @@ const AuthenticatedComponent:React.FC<authenticatedComponentProps> =({children})
     return(
         <div>
             {userIsAuthenticated === undefined ?
-                <>carregando</>
+                <div className={'w-screen h-screen flex justify-center items-center'}>
+                    <div className={'flex justify-center items-center rounded-full w-32 h-32 border-2 border-red-600 animate-spin '}>
+                        <div className={'flex justify-center items-center rounded-full w-31 h-31 border-2 border-blue-700 animate-spin'}>
+                            <div className={'flex justify-center items-center rounded-full  w-32 h-32 border-3 border-red-600 animate-ping shadow-2xl'}>
+                                <div className={'flex justify-center items-center rounded-full  w-32 h-32 border-2 border-blue-600 animate-pulse'}>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 :
                 <>
-                    {userIsAuthenticated ?
+                {userIsAuthenticated ?
                         <>{children}</>
                         :
                         <>voce não esta authenticado</>
