@@ -5,6 +5,7 @@ import GitLabIcon from "@/components/icons/gitlabIcon";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {createAuthCookie} from "@/utils/createAuthCookie";
+import Image from "next/image";
 
 
 export default function SignIn(){
@@ -118,7 +119,9 @@ export default function SignIn(){
                    </div>
                </section>
                 <section className={'hidden lg:block xl:w-1/2'}>
-
+                    <div className={'relative w-full h-full flex items-center '}>
+                        <Image src={'/images/app.png'} alt={''}  width={1024} height={1024} className={'p-3 border-4 rounded-lg shadow-2xl'}/>
+                    </div>
                 </section>
             </main>
         </div>

@@ -3,6 +3,7 @@ import GitHubIcon from "@/components/icons/githubIcon";
 import GitLabIcon from "@/components/icons/gitlabIcon";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import Image from "next/image";
 
 
 export default function Page(){
@@ -42,10 +43,11 @@ export default function Page(){
                         <div className={'w-full lg:w-[480px] py-8 text-center'}>
                             <h1 className={'capitalize text-2xl py-6 font-medium text-[#141414]'}>Registro</h1>
                             <p className={'first-letter:capitalize font-light text-gray-500'}>
-                               digite suas credenciais para registrar um novo usuario
+                                digite suas credenciais para registrar um novo usuario
                             </p>
                         </div>
-                        <form className={'w-full lg:w-[480px] flex flex-col gap-3 py-4'} id={'signUpUserForm'} onSubmit={submitForm}>
+                        <form className={'w-full lg:w-[480px] flex flex-col gap-3 py-4'} id={'signUpUserForm'}
+                              onSubmit={submitForm}>
                             <label className={'flex flex-col gap-2'}>
                                 <span className={'text-center text-red-600 font-bold'}>{error}</span>
                                 <h2 className={'first-letter:capitalize'}>
@@ -58,7 +60,9 @@ export default function Page(){
                                     placeholder={'ex:grandmaster123'}
                                     className={'text-xs outline-none border-2 border-gray-500 w-full h-11 p-3 focus:border-blue-700 rounded-md transition-all duration-300'}
                                     value={userName}
-                                    onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setUserName(e.target.value)}}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                        setUserName(e.target.value)
+                                    }}
                                 />
                             </label>
                             <label className={'flex flex-col gap-2'}>
@@ -72,7 +76,9 @@ export default function Page(){
                                     placeholder={'your password'}
                                     className={'text-xs outline-none border-2 border-gray-500 w-full h-11 p-3 focus:border-blue-700 rounded-md transition-all duration-300'}
                                     value={userPassword}
-                                    onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setUserPassword(e.target.value)}}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                        setUserPassword(e.target.value)
+                                    }}
                                 />
                             </label>
                             <button
@@ -115,7 +121,10 @@ export default function Page(){
                     </div>
                 </section>
                 <section className={'hidden lg:block xl:w-1/2'}>
-
+                    <div className={'relative w-full h-full flex items-center '}>
+                        <Image src={'/images/app.png'} alt={''} width={1024} height={1024}
+                               className={'p-3 border-4 rounded-lg shadow-2xl'}/>
+                    </div>
                 </section>
             </main>
         </div>

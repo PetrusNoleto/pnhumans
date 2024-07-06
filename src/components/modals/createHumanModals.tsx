@@ -147,7 +147,7 @@ const CreateHumanModal:React.FC<createHumanModalProps> = ({closePanel})=>{
                                         {loading ?
                                                 <div
                                                     className={'p-3 border rounded-lg bg-blue-700 text-white text-xs font-bold lg:p-2 flex gap-3'}
-                                                    
+
                                                 >
                                                     escolher humano
                                                 <div className={'w-4 h-4 border rounded-full animate-spin border-white'}>

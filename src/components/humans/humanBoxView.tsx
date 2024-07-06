@@ -10,7 +10,7 @@ interface  HumanBoxViewProps{
 }
 const HumanBoxView:React.FC<HumanBoxViewProps> = ({humanObject,closePanel,deleteHuman})=>{
     return(
-        <div className={'fixed top-0 left-0 w-screen h-screen  bg-black/50 border z-10 shadow-lg flex justify-center items-center  rounded-lg'}>
+        <div className={'fixed top-0 left-0 w-screen h-screen  bg-black/50 border z-50 shadow-lg flex justify-center items-center  rounded-lg overflow-hidden '}>
             <div className={'relative w-full h-full lg:w-[480px] lg:h-[780px] bg-white  rounded-lg p-6'}>
                 <div className={'py-3 border rounded-full w-[280px] h-[280px] flex justify-center items-center'} >
                     <Image src={humanObject.picture} alt={''} width={240} height={240} className={'rounded-full'} quality={100} priority={true}/>
