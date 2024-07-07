@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Documentação PNHUMANS v0.1.0
 
-## Getting Started
+## Status = descontinuado
 
-First, run the development server:
+![app](./public/images/app.png)
+
+
+# Guia de instalação
+
+Para iniciar o processo de instalação você deve ter instalado no seu computador ou servidor o **Nodejs 20.14**
+
+## Instalar Nodejs no windows
+
+### Download Nodejs
+
+link para download: [https://nodejs.org/en/download/prebuilt-installer](https://nodejs.org/en/download/prebuilt-installer)
+
+- Escolha a versão 20.14 do Nodejs
+- Escolha seu sistema operacional
+- Escolha a versão do seu sistema
+- Clique em **Download Node.js v20.14.**
+
+![intallnodejs](./public/images/instalations/installnode.png)
+
+## Instalar Nodejs no Linux
+
+Baseados em Debian/Ubuntu
+
+no terminal
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+nvm install 20
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Feche o terminal caso esteja usando linux no modo interface(**Desktop**), caso esteja usando somente no modo terminal(**server**) reinicie a maquina.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Agora teste se a instalação deu certo.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+node -v 
+```
 
-## Learn More
+## Configurando Variáveis de Ambiente
 
-To learn more about Next.js, take a look at the following resources:
+crie um arquivo na raiz do protejo chamando **.env** dentro do arquivo coloque a seguinte configuração.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+PN_HUMANS_API_ADDRESS = "http://localhost:4700"
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Essa é a chave onde você ira colocar o endereço da sua api interna onde serão manipulado os usuario e os huamnos salvos
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+RANDON_HUMANS_API_ADDRESS = "https://randomuser.me/api/?nat=br"
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Essa é a chave onde você ira colocar o endereço da api onde a aplicação ira pegar os humanos.
+
+
+Após essa configuração a aplicação está pronta para ser inicializada
+
+## Inicializando a aplicação
+
+Para inicializar a aplicação digite o seguinte comando no terminal
+
+```bash
+npm run deploy
+```
+
+se ocorrer tudo bem
+
+![initApi](./public/images/instalations/init.png)
+
+
+
+
